@@ -1,0 +1,19 @@
+{
+  "name": "nest-cqrs-hex-schematic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "schematics": "./src/collection.json",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular-devkit/core": "^20.0.2",
+    "@angular-devkit/schematics": "^20.0.2",
+    "@schematics/angular": "^20.0.2",
+    "typescript": "^5.8.3"
+  }
+}
