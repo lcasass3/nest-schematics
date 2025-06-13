@@ -1,0 +1,27 @@
+import { Module } from '@nestjs/common';
+
+import {
+  All<%= classify(name) %>sHandler,
+  Find<%= classify(name) %>ByIdHandler,
+} from './application/queries/handlers';
+import {
+  Create<%= classify(name) %>Handler,
+  Delete<%= classify(name) %>Handler,
+  Update<%= classify(name) %>Handler,
+} from './application/commands/handlers';
+import { Typeorm<%= classify(name) %>PersistenceModule } from './infrastructure/persistance/modules';
+import { <%= classify(name) %>sController } from './infrastructure/<%= dasherize(name) %>s.controller';
+
+@Module({
+  imports: [Typeorm<%= classify(name) %>PersistenceModule],
+  exports: [Typeorm<%= classify(name) %>PersistenceModule],
+  controllers: [<%= classify(name) %>sController],
+  providers: [
+    All<%= classify(name) %>sHandler,
+    Find<%= classify(name) %>ByIdHandler,
+    Create<%= classify(name) %>Handler,
+    Update<%= classify(name) %>Handler,
+    Delete<%= classify(name) %>Handler,
+  ],
+})
+export class <%= classify(name) %>sModule {}

@@ -1,0 +1,11 @@
+/**
+ * <%= classify(name) %> Entity.
+ * Represents a <%= dasherize(name) %> in the system.
+ * Used as a domain model in the application.
+ */
+export interface <%= classify(name) %> {
+  id: string;
+  // Add your domain properties here
+  createdAt: Date;
+  updatedAt: Date;
+}

@@ -1,0 +1,68 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+
+import { ZodValidationPipe } from '#shared/pipes/zod-validation.pipe';
+import {
+  Create<%= classify(name) %>Dto,
+  create<%= classify(name) %>Schema,
+  Update<%= classify(name) %>Dto,
+  update<%= classify(name) %>Schema,
+} from '../domain/dtos';
+import { All<%= classify(name) %>sQuery, Find<%= classify(name) %>ByIdQuery } from '../application/queries/impl';
+import {
+  Create<%= classify(name) %>Command,
+  Delete<%= classify(name) %>Command,
+  Update<%= classify(name) %>Command,
+} from '../application/commands/impl';
+
+@Controller({
+  path: '<%= dasherize(name) %>s',
+  version: '1',
+})
+export class <%= classify(name) %>sController {
+  constructor(
+    private readonly commandBus: CommandBus,
+    private readonly queryBus: QueryBus,
+  ) {}
+
+  // Query handlers for retrieving <%= dasherize(name) %>s
+  @Get()
+  async all() {
+    return this.queryBus.execute(new All<%= classify(name) %>sQuery());
+  }
+
+  @Get(':id')
+  async findById(@Param('id', ParseUUIDPipe) id: string) {
+    return this.queryBus.execute(new Find<%= classify(name) %>ByIdQuery(id));
+  }
+
+  // Command handlers for creating, updating, and deleting <%= dasherize(name) %>s
+  @Post()
+  async create(
+    @Body(new ZodValidationPipe(create<%= classify(name) %>Schema)) create<%= classify(name) %>Dto: Create<%= classify(name) %>Dto,
+  ) {
+    return this.commandBus.execute(new Create<%= classify(name) %>Command(create<%= classify(name) %>Dto));
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body(new ZodValidationPipe(update<%= classify(name) %>Schema)) update<%= classify(name) %>Dto: Update<%= classify(name) %>Dto,
+  ) {
+    return this.commandBus.execute(new Update<%= classify(name) %>Command(id, update<%= classify(name) %>Dto));
+  }
+
+  @Delete(':id')
+  async delete(@Param('id', ParseUUIDPipe) id: string) {
+    return this.commandBus.execute(new Delete<%= classify(name) %>Command(id));
+  }
+}

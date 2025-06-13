@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "CQRSModuleSchema",
+  "title": "CQRS Module Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The module name",
+      "default": { "$source": "argv", "index": 0 },
+      "x-prompt": "What name would you like to use for the module?"
+    },
+    "path": {
+      "type": "string",
+      "description": "Where to generate the module",
+      "default": "src/modules",
+      "x-prompt": "Where would you like to generate the module?"
+    }
+  },
+  "required": ["name"]
+}

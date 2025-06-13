@@ -1,0 +1,9 @@
+import z from 'zod/v4';
+
+export const update<%= classify(name) %>Schema = z.object({
+  // Add your validation schema here (partial)
+  // Example:
+  // name: z.string().min(1, 'Name is required').optional(),
+});
+
+export type Update<%= classify(name) %>Dto = z.infer<typeof update<%= classify(name) %>Schema>;

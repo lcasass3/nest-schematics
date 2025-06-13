@@ -1,0 +1,35 @@
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+
+import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
+
+@Entity('<%= dasherize(name) %>s')
+export class Typeorm<%= classify(name) %> implements <%= classify(name) %> {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  // Add your database columns here
+  // Example:
+  // @Column()
+  // name: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: Date;
+
+  toDomain(): <%= classify(name) %> {
+    return {
+      id: this.id,
+      // Map your properties here
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    };
+  }
+}

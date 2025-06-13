@@ -1,0 +1,15 @@
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+
+import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
+import { I<%= classify(name) %>Repository } from '#modules/<%= dasherize(name) %>s/domain/repositories';
+import { All<%= classify(name) %>sQuery } from '../impl';
+
+@QueryHandler(All<%= classify(name) %>sQuery)
+export class All<%= classify(name) %>sHandler implements IQueryHandler<All<%= classify(name) %>sQuery> {
+  constructor(private readonly <%= camelize(name) %>Repository: I<%= classify(name) %>Repository) {}
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async execute(_query: All<%= classify(name) %>sQuery): Promise<<%= classify(name) %>[]> {
+    return this.<%= camelize(name) %>Repository.all();
+  }
+}
