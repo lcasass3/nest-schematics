@@ -1,2 +1,2 @@
-export * from './create-<%= dasherize(name) %>.dto';
-export * from './update-<%= dasherize(name) %>.dto';
+export * from './create-<%= name %>.dto';
+export * from './update-<%= name %>.dto';

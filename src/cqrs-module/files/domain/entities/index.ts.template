@@ -1,1 +1,1 @@
-export * from './<%= dasherize(name) %>.entity';
+export * from './<%= name %>.entity';

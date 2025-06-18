@@ -1,10 +1,10 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "": {
+    "cqrs-module": {
       "description": "Generate a CQRS + hexagonal module",
-      "factory": "./cqrs-module/index#moduleSchematic",
-      "schema": "./cqrs-module/schema.json"
+      "schema": "./cqrs-module/schema.json",
+      "factory": "./index#default"
     }
   }
 }

@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
 
 import {
-  All<%= classify(name) %>sHandler,
+  All<%= classify(plural(name)) %>Handler,
   Find<%= classify(name) %>ByIdHandler,
 } from './application/queries/handlers';
 import {
@@ -10,18 +11,18 @@ import {
   Update<%= classify(name) %>Handler,
 } from './application/commands/handlers';
 import { Typeorm<%= classify(name) %>PersistenceModule } from './infrastructure/persistance/modules';
-import { <%= classify(name) %>sController } from './infrastructure/<%= dasherize(name) %>s.controller';
+import { <%= classify(plural(name)) %>Controller } from './infrastructure/<%= dasherize(plural(name)) %>.controller';
 
 @Module({
-  imports: [Typeorm<%= classify(name) %>PersistenceModule],
+  imports: [CqrsModule, Typeorm<%= classify(name) %>PersistenceModule],
   exports: [Typeorm<%= classify(name) %>PersistenceModule],
-  controllers: [<%= classify(name) %>sController],
+  controllers: [<%= classify(plural(name)) %>Controller],
   providers: [
-    All<%= classify(name) %>sHandler,
+    All<%= classify(plural(name)) %>Handler,
     Find<%= classify(name) %>ByIdHandler,
     Create<%= classify(name) %>Handler,
     Update<%= classify(name) %>Handler,
     Delete<%= classify(name) %>Handler,
   ],
 })
-export class <%= classify(name) %>sModule {}
+export class <%= classify(plural(name)) %>Module {}

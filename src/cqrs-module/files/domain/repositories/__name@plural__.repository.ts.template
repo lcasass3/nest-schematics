@@ -1,7 +1,7 @@
 import { Create<%= classify(name) %>Dto, Update<%= classify(name) %>Dto } from '../dtos';
 import { <%= classify(name) %> } from '../entities';
 
-export abstract class I<%= classify(name) %>Repository {
+export abstract class I<%= classify(plural(name)) %>Repository {
   abstract all(): Promise<<%= classify(name) %>[]>;
   abstract findById(id: string): Promise<<%= classify(name) %> | null>;
 

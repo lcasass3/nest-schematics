@@ -1,6 +1,6 @@
 import { Query } from '@nestjs/cqrs';
 
-import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
+import { <%= classify(name) %> } from '#modules/<%= plural(name) %>/domain/entities';
 
 export class Find<%= classify(name) %>ByIdQuery extends Query<<%= classify(name) %> | null> {
   constructor(public readonly id: string) {

@@ -1,2 +1,2 @@
-export * from './all-<%= dasherize(name) %>s.handler';
-export * from './find-<%= dasherize(name) %>-by-id.handler';
+export * from './all-<%= dasherize(plural(name)) %>.handler';
+export * from './find-<%= name %>-by-id.handler';

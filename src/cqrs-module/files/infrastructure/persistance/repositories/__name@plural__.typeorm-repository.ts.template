@@ -2,39 +2,39 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { I<%= classify(name) %>Repository } from '#modules/<%= dasherize(name) %>s/domain/repositories';
-import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
-import { Create<%= classify(name) %>Dto, Update<%= classify(name) %>Dto } from '#modules/<%= dasherize(name) %>s/domain/dtos';
+import { I<%= classify(plural(name)) %>Repository } from '#modules/<%= dasherize(plural(name)) %>/domain/repositories';
+import { <%= classify(name) %> } from '#modules/<%= dasherize(plural(name)) %>/domain/entities';
+import { Create<%= classify(name) %>Dto, Update<%= classify(name) %>Dto } from '#modules/<%= dasherize(plural(name)) %>/domain/dtos';
 import { Typeorm<%= classify(name) %> } from '../entities';
 
 @Injectable()
-export class Typeorm<%= classify(name) %>Repository implements I<%= classify(name) %>Repository {
+export class Typeorm<%= classify(plural(name)) %>Repository implements I<%= classify(plural(name)) %>Repository {
   constructor(
     @InjectRepository(Typeorm<%= classify(name) %>)
-    private readonly <%= camelize(name) %>Repository: Repository<Typeorm<%= classify(name) %>>,
+    private readonly <%= camelize(plural(name)) %>Repository: Repository<Typeorm<%= classify(name) %>>,
   ) {}
 
   all(): Promise<<%= classify(name) %>[]> {
-    return this.<%= camelize(name) %>Repository
+    return this.<%= camelize(plural(name)) %>Repository
       .find()
-      .then((<%= camelize(name) %>s) => <%= camelize(name) %>s.map((<%= camelize(name) %>) => <%= camelize(name) %>.toDomain()));
+      .then((<%= camelize(plural(name)) %>) => <%= camelize(plural(name)) %>.map((<%= camelize(name) %>) => <%= camelize(name) %>.toDomain()));
   }
 
   findById(id: string): Promise<<%= classify(name) %> | null> {
-    return this.<%= camelize(name) %>Repository
+    return this.<%= camelize(plural(name)) %>Repository
       .findOne({ where: { id } })
       .then((<%= camelize(name) %>) => (<%= camelize(name) %> ? <%= camelize(name) %>.toDomain() : null));
   }
 
   create(<%= camelize(name) %>: Create<%= classify(name) %>Dto): Promise<<%= classify(name) %>> {
-    const new<%= classify(name) %> = this.<%= camelize(name) %>Repository.create(<%= camelize(name) %>);
-    return this.<%= camelize(name) %>Repository
+    const new<%= classify(name) %> = this.<%= camelize(plural(name)) %>Repository.create(<%= camelize(name) %>);
+    return this.<%= camelize(plural(name)) %>Repository
       .save(new<%= classify(name) %>)
       .then((saved<%= classify(name) %>) => saved<%= classify(name) %>.toDomain());
   }
 
   update(id: string, <%= camelize(name) %>: Update<%= classify(name) %>Dto): Promise<<%= classify(name) %>> {
-    return this.<%= camelize(name) %>Repository
+    return this.<%= camelize(plural(name)) %>Repository
       .findOne({ where: { id } })
       .then((existing<%= classify(name) %>) => {
         if (!existing<%= classify(name) %>) {
@@ -42,7 +42,7 @@ export class Typeorm<%= classify(name) %>Repository implements I<%= classify(nam
         }
 
         const updated<%= classify(name) %> = Object.assign(existing<%= classify(name) %>, <%= camelize(name) %>);
-        return this.<%= camelize(name) %>Repository
+        return this.<%= camelize(plural(name)) %>Repository
           .save(updated<%= classify(name) %>)
           .then((saved<%= classify(name) %>) => saved<%= classify(name) %>.toDomain());
       });

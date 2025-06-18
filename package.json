@@ -1,19 +1,52 @@
 {
   "name": "nest-cqrs-hex-schematic",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Angular CLI schematic for generating CQRS modules with hexagonal architecture in NestJS applications",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && npm run copy:files",
+    "copy:files": "mkdir -p dist/cqrs-module && cp -r src/cqrs-module/files dist/cqrs-module/ && cp src/collection.json dist/ && cp src/cqrs-module/schema.json dist/cqrs-module/",
+    "build:watch": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:full": "npm run build && npm run test",
+    "prepublishOnly": "npm run build"
   },
   "schematics": "./src/collection.json",
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nestjs",
+    "cqrs",
+    "hexagonal-architecture",
+    "schematic",
+    "angular-cli",
+    "typescript",
+    "clean-architecture",
+    "typeorm"
+  ],
+  "author": "Your Name",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lcasass3/nest-schematics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lcasass3/nest-schematics/issues"
+  },
+  "homepage": "https://github.com/lcasass3/nest-schematics#readme",
   "devDependencies": {
     "@angular-devkit/core": "^20.0.2",
     "@angular-devkit/schematics": "^20.0.2",
+    "@angular-devkit/schematics-cli": "^20.0.2",
     "@schematics/angular": "^20.0.2",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.3",
+    "@types/pluralize": "^0.0.33",
+    "jest": "^30.0.0",
+    "ts-jest": "^29.4.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "pluralize": "^8.0.0"
   }
 }

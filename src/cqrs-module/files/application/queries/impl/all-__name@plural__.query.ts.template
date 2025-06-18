@@ -1,0 +1,9 @@
+import { Query } from '@nestjs/cqrs';
+
+import { <%= classify(name) %> } from '#modules/<%= plural(name) %>/domain/entities';
+
+export class All<%= classify(plural(name)) %>Query extends Query<<%= classify(name) %>[]> {
+  constructor() {
+    super();
+  }
+}

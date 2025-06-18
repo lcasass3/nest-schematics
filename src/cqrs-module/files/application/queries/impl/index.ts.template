@@ -1,2 +1,2 @@
-export * from './all-<%= dasherize(name) %>s.query';
-export * from './find-<%= dasherize(name) %>-by-id.query';
+export * from './all-<%= dasherize(plural(name)) %>.query';
+export * from './find-<%= name %>-by-id.query';

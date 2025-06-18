@@ -1,1 +1,1 @@
-export * from './<%= dasherize(name) %>.repository';
+export * from './<%= dasherize(plural(name)) %>.repository';

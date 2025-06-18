@@ -17,7 +17,7 @@ import {
   Update<%= classify(name) %>Dto,
   update<%= classify(name) %>Schema,
 } from '../domain/dtos';
-import { All<%= classify(name) %>sQuery, Find<%= classify(name) %>ByIdQuery } from '../application/queries/impl';
+import { All<%= classify(plural(name)) %>Query, Find<%= classify(name) %>ByIdQuery } from '../application/queries/impl';
 import {
   Create<%= classify(name) %>Command,
   Delete<%= classify(name) %>Command,
@@ -25,19 +25,19 @@ import {
 } from '../application/commands/impl';
 
 @Controller({
-  path: '<%= dasherize(name) %>s',
+  path: '<%= dasherize(plural(name)) %>',
   version: '1',
 })
-export class <%= classify(name) %>sController {
+export class <%= classify(plural(name)) %>Controller {
   constructor(
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
   ) {}
 
-  // Query handlers for retrieving <%= dasherize(name) %>s
+  // Query handlers for retrieving <%= dasherize(plural(name)) %>
   @Get()
   async all() {
-    return this.queryBus.execute(new All<%= classify(name) %>sQuery());
+    return this.queryBus.execute(new All<%= classify(plural(name)) %>Query());
   }
 
   @Get(':id')
@@ -45,7 +45,7 @@ export class <%= classify(name) %>sController {
     return this.queryBus.execute(new Find<%= classify(name) %>ByIdQuery(id));
   }
 
-  // Command handlers for creating, updating, and deleting <%= dasherize(name) %>s
+  // Command handlers for creating, updating, and deleting <%= dasherize(plural(name)) %>
   @Post()
   async create(
     @Body(new ZodValidationPipe(create<%= classify(name) %>Schema)) create<%= classify(name) %>Dto: Create<%= classify(name) %>Dto,

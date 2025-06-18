@@ -1,1 +1,1 @@
-export * from './<%= dasherize(name) %>.typeorm-entity';
+export * from './<%= name %>.typeorm-entity';

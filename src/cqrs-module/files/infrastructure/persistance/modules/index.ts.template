@@ -1,1 +1,1 @@
-export * from './typeorm-<%= dasherize(name) %>.module';
+export * from './typeorm-<%= name %>.module';

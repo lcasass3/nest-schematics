@@ -13,8 +13,15 @@
     "path": {
       "type": "string",
       "description": "Where to generate the module",
-      "default": "src/modules",
+      "$default": {
+        "$source": "workingDirectory/src"
+      },
       "x-prompt": "Where would you like to generate the module?"
+    },
+    "module": {
+      "type": "string",
+      "description": "Path to the module declaration file",
+      "x-prompt": "Path to the module where the new module should be declared (leave empty for auto-detection)"
     }
   },
   "required": ["name"]

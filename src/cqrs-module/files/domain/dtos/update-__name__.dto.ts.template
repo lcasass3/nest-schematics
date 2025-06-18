@@ -1,0 +1,4 @@
+import z from 'zod/v4';
+
+export const update<%= classify(name) %>Schema = z.object({});
+export type Update<%= classify(name) %>Dto = z.infer<typeof update<%= classify(name) %>Schema>;

@@ -1,14 +1,14 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
-import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
-import { I<%= classify(name) %>Repository } from '#modules/<%= dasherize(name) %>s/domain/repositories';
+import { <%= classify(name) %> } from '#modules/<%= plural(name) %>/domain/entities';
+import { I<%= classify(plural(name)) %>Repository } from '#modules/<%= dasherize(plural(name))%>/domain/repositories';
 import { Find<%= classify(name) %>ByIdQuery } from '../impl';
 
 @QueryHandler(Find<%= classify(name) %>ByIdQuery)
 export class Find<%= classify(name) %>ByIdHandler implements IQueryHandler<Find<%= classify(name) %>ByIdQuery> {
-  constructor(private readonly <%= camelize(name) %>Repository: I<%= classify(name) %>Repository) {}
+  constructor(private readonly <%= camelize(plural(name)) %>Repository: I<%= classify(plural(name)) %>Repository) {}
 
   async execute({ id }: Find<%= classify(name) %>ByIdQuery): Promise<<%= classify(name) %> | null> {
-    return this.<%= camelize(name) %>Repository.findById(id);
+    return this.<%= camelize(plural(name)) %>Repository.findById(id);
   }
 }

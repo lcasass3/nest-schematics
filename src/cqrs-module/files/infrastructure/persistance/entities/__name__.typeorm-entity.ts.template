@@ -6,9 +6,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
+import { <%= classify(name) %> } from '#modules/<%= dasherize(plural(name)) %>/domain/entities';
 
-@Entity('<%= dasherize(name) %>s')
+@Entity('<%= dasherize(plural(name)) %>')
 export class Typeorm<%= classify(name) %> implements <%= classify(name) %> {
   @PrimaryGeneratedColumn('uuid')
   id: string;

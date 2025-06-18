@@ -1,7 +1,7 @@
 import { Command } from '@nestjs/cqrs';
 
-import { <%= classify(name) %> } from '#modules/<%= dasherize(name) %>s/domain/entities';
-import { Update<%= classify(name) %>Dto } from '#modules/<%= dasherize(name) %>s/domain/dtos';
+import { <%= classify(name) %> } from '#modules/<%= plural(name) %>/domain/entities';
+import { Update<%= classify(name) %>Dto } from '#modules/<%= plural(name) %>/domain/dtos';
 
 export class Update<%= classify(name) %>Command extends Command<<%= classify(name) %>> {
   constructor(

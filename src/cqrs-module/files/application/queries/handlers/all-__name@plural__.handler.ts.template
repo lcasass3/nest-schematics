@@ -1,0 +1,15 @@
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+
+import { <%= classify(name) %> } from '#modules/<%= plural(name) %>/domain/entities';
+import { I<%= classify(plural(name)) %>Repository } from '#modules/<%= dasherize(plural(name))%>/domain/repositories';
+import { All<%= classify(plural(name)) %>Query } from '../impl';
+
+@QueryHandler(All<%= classify(plural(name)) %>Query)
+export class All<%= classify(plural(name)) %>Handler implements IQueryHandler<All<%= classify(plural(name)) %>Query> {
+  constructor(private readonly <%= camelize(plural(name)) %>Repository: I<%= classify(plural(name)) %>Repository) {}
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async execute(_query: All<%= classify(plural(name)) %>Query): Promise<<%= classify(name) %>[]> {
+    return this.<%= camelize(plural(name)) %>Repository.all();
+  }
+}

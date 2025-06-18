@@ -1,1 +1,1 @@
-export * from './<%= dasherize(name) %>.typeorm-repository';
+export * from './<%= dasherize(plural(name)) %>.typeorm-repository';

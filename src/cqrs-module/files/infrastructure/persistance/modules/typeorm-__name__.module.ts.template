@@ -1,0 +1,18 @@
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { I<%= classify(plural(name)) %>Repository } from '#modules/<%= dasherize(plural(name)) %>/domain/repositories';
+import { Typeorm<%= classify(name) %> } from '../entities';
+import { Typeorm<%= classify(plural(name)) %>Repository } from '../repositories';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([Typeorm<%= classify(name) %>])],
+  providers: [
+    {
+      provide: I<%= classify(plural(name)) %>Repository,
+      useClass: Typeorm<%= classify(plural(name)) %>Repository,
+    },
+  ],
+  exports: [I<%= classify(plural(name)) %>Repository],
+})
+export class Typeorm<%= classify(name) %>PersistenceModule {}
