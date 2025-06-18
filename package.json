@@ -24,7 +24,7 @@
     "clean-architecture",
     "typeorm"
   ],
-  "author": "Your Name",
+  "author": "Leon Casas",
   "license": "MIT",
   "repository": {
     "type": "git",
