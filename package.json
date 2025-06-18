@@ -1,5 +1,5 @@
 {
-  "name": "nest-cqrs-hex-schematic",
+  "name": "@lcasass3/nest-schematics",
   "version": "1.0.0",
   "description": "Angular CLI schematic for generating CQRS modules with hexagonal architecture in NestJS applications",
   "main": "dist/index.js",

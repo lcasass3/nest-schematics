@@ -7,7 +7,7 @@ import * as path from 'path';
 
 describe('CQRS Module Schematic', () => {
   const schematicRunner = new SchematicTestRunner(
-    'nest-cqrs-hex-schematic',
+    '@lcasass3/nest-schematics',
     path.join(__dirname, '../../../dist/collection.json')
   );
 

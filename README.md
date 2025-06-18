@@ -17,8 +17,10 @@ modules following hexagonal architecture principles in NestJS applications.
 ## Installation
 
 ```bash
-npm install -g nest-cqrs-hex-schematic
+npm install -g @lcasass3/nest-schematics
 ```
+
+Due to the implementation of the NestJS CLI, the package must be global.
 
 ## Usage
 
@@ -26,13 +28,13 @@ npm install -g nest-cqrs-hex-schematic
 
 ```bash
 # Generate a CQRS module for a "user" entity
-schematics nest-cqrs-hex-schematic:cqrs-module user
+nest g -c @lcasass3/nest-schematics cqrs-module user
 
 # Generate in a specific path
-schematics nest-cqrs-hex-schematic:cqrs-module user --path=src/modules
+nest g -c @lcasass3/nest-schematics cqrs-module user --path=src/modules
 
 # Specify parent module for registration
-schematics nest-cqrs-hex-schematic:cqrs-module user --module=src/app.module.ts
+nest g -c @lcasass3/nest-schematics cqrs-module user --module=src/app.module.ts
 ```
 
 ### Options
@@ -45,7 +47,8 @@ schematics nest-cqrs-hex-schematic:cqrs-module user --module=src/app.module.ts
 
 ## Generated Structure
 
-When you run the schematic with `schematics nest-cqrs-hex-schematic:cqrs-module user`, it generates:
+When you run the schematic with `schematics @lcasass3/nest-schematics:cqrs-module user`, it
+generates:
 
 ```
 src/user/
@@ -135,17 +138,6 @@ npm run build
 
 # Build in watch mode
 npm run build:watch
-```
-
-### Testing Locally
-
-```bash
-# Link the schematic globally
-npm link
-
-# Test in a NestJS project
-cd /path/to/your/nestjs/project
-schematics nest-cqrs-hex-schematic:cqrs-module user
 ```
 
 ## Code Quality Features
