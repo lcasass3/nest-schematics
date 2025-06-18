@@ -37,6 +37,9 @@
     "url": "https://github.com/lcasass3/nest-schematics/issues"
   },
   "homepage": "https://github.com/lcasass3/nest-schematics#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@angular-devkit/core": "^20.0.2",
     "@angular-devkit/schematics": "^20.0.2",
