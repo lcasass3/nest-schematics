@@ -14,7 +14,7 @@
     "format": "prettier --write \"src/**/*.{ts,js,json,md}\" \"*.{json,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,js,json,md}\" \"*.{json,md}\"",
     "prepublishOnly": "npm run build",
-    "ci": "npm run build && npm run test"
+    "ci": "npm run build && npm run test && npm run format:check"
   },
   "schematics": "./src/collection.json",
   "keywords": [
