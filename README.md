@@ -1,11 +1,13 @@
 # NestJS CQRS Hexagonal Architecture Schematic
 
-A powerful Angular CLI schematic for generating CQRS (Command Query Responsibility Segregation) modules following hexagonal architecture principles in NestJS applications.
+A powerful Angular CLI schematic for generating CQRS (Command Query Responsibility Segregation)
+modules following hexagonal architecture principles in NestJS applications.
 
 ## Features
 
 - 🏗️ **Complete CQRS Structure**: Generates commands, queries, handlers, and controllers
-- 🔷 **Hexagonal Architecture**: Follows clean architecture principles with clear separation of concerns
+- 🔷 **Hexagonal Architecture**: Follows clean architecture principles with clear separation of
+  concerns
 - 🗄️ **TypeORM Integration**: Includes repository pattern with TypeORM entities
 - 📝 **TypeScript Support**: Fully typed with proper interfaces and DTOs
 - 🔧 **Module Registration**: Automatically registers the generated module in the parent module
@@ -100,7 +102,8 @@ src/user/
 
 1. **Domain Layer** (`domain/`): Contains business logic, entities, and repository interfaces
 2. **Application Layer** (`application/`): Contains use cases (commands, queries, and handlers)
-3. **Infrastructure Layer** (`infrastructure/`): Contains external concerns (controllers, database, etc.)
+3. **Infrastructure Layer** (`infrastructure/`): Contains external concerns (controllers, database,
+   etc.)
 
 ### CQRS Pattern
 

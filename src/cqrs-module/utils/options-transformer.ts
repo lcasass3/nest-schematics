@@ -1,6 +1,6 @@
-import { join, Path, strings } from "@angular-devkit/core";
-import pluralize from "pluralize";
-import { CqrsModuleOptions } from "../schema";
+import { join, Path, strings } from '@angular-devkit/core';
+import pluralize from 'pluralize';
+import { CqrsModuleOptions } from '../schema';
 
 /**
  * Utility class for transforming and formatting options
@@ -17,7 +17,7 @@ export class OptionsTransformer {
     const target = { ...options };
     target.name = this.formatName(options.name);
     target.path = this.buildPath(options.path, target.name);
-    target.metadata = "imports";
+    target.metadata = 'imports';
 
     return target;
   }
@@ -42,7 +42,7 @@ export class OptionsTransformer {
    * @returns Complete path
    */
   private static buildPath(basePath: string | undefined, name: string): string {
-    return join(strings.dasherize(basePath || "src") as Path, name);
+    return join(strings.dasherize(basePath || 'src') as Path, name);
   }
 
   /**
@@ -65,18 +65,18 @@ export class OptionsTransformer {
   } {
     const errors: string[] = [];
 
-    if (!options.name || options.name.trim() === "") {
-      errors.push("Name is required");
+    if (!options.name || options.name.trim() === '') {
+      errors.push('Name is required');
     }
 
     if (options.name && !/^[a-zA-Z][a-zA-Z0-9-_]*$/.test(options.name)) {
       errors.push(
-        "Name must start with a letter and contain only letters, numbers, hyphens, and underscores"
+        'Name must start with a letter and contain only letters, numbers, hyphens, and underscores'
       );
     }
 
     if (options.path && !options.path.trim()) {
-      errors.push("Path cannot be empty if provided");
+      errors.push('Path cannot be empty if provided');
     }
 
     return {

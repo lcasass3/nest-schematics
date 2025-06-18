@@ -46,7 +46,7 @@ export class ModuleContentManipulator {
     const importRegex = new RegExp(
       `import\\s*{[^}]*${moduleName}[^}]*}\\s*from\\s*['"\`]${importPath.replace(
         /[.*+?^${}()|[\]\\]/g,
-        "\\$&"
+        '\\$&'
       )}['"\`]`
     );
     return importRegex.test(content);
@@ -65,7 +65,7 @@ export class ModuleContentManipulator {
     importPath: string
   ): string {
     const importStatement = `import { ${moduleName} } from '${importPath}';`;
-    const lines = content.split("\n");
+    const lines = content.split('\n');
     const lastImportIndex = this.findLastImportIndex(lines);
 
     if (lastImportIndex >= 0) {
@@ -74,7 +74,7 @@ export class ModuleContentManipulator {
       lines.unshift(importStatement);
     }
 
-    return lines.join("\n");
+    return lines.join('\n');
   }
 
   /**
@@ -86,7 +86,7 @@ export class ModuleContentManipulator {
     let lastImportIndex = -1;
 
     for (let i = 0; i < lines.length; i++) {
-      if (lines[i].trim().startsWith("import ")) {
+      if (lines[i].trim().startsWith('import ')) {
         lastImportIndex = i;
       }
     }
@@ -108,7 +108,7 @@ export class ModuleContentManipulator {
     const match = content.match(moduleRegex);
 
     if (!match) {
-      console.warn("Could not find @Module decorator to add imports");
+      console.warn('Could not find @Module decorator to add imports');
       return content;
     }
 
@@ -172,9 +172,9 @@ export class ModuleContentManipulator {
     moduleConfig: string,
     moduleName: string
   ): string {
-    const configLines = moduleConfig.split("\n");
+    const configLines = moduleConfig.split('\n');
     const hasExistingConfig = configLines.some(
-      (line) => line.trim() && !line.trim().startsWith("//")
+      line => line.trim() && !line.trim().startsWith('//')
     );
 
     if (hasExistingConfig) {

@@ -1,5 +1,5 @@
-import { Tree } from "@angular-devkit/schematics";
-import { CqrsModuleOptions } from "../schema";
+import { Tree } from '@angular-devkit/schematics';
+import { CqrsModuleOptions } from '../schema';
 
 /**
  * Utility class for finding module files in the project
@@ -34,15 +34,15 @@ export class ModuleFinder {
     tree: Tree,
     startPath: string
   ): string | null {
-    const pathSegments = startPath.split("/").filter(Boolean);
+    const pathSegments = startPath.split('/').filter(Boolean);
 
     while (pathSegments.length > 0) {
-      const currentPath = pathSegments.join("/");
+      const currentPath = pathSegments.join('/');
       const dir = tree.getDir(currentPath);
 
       if (dir) {
         const moduleFile = dir.subfiles.find(
-          (file) => file.endsWith(".module.ts") || file.endsWith(".module.js")
+          file => file.endsWith('.module.ts') || file.endsWith('.module.js')
         );
 
         if (moduleFile) {
@@ -63,9 +63,9 @@ export class ModuleFinder {
    */
   private static findInCommonLocations(tree: Tree): string | null {
     const commonPaths = [
-      "src/app.module.ts",
-      "src/app/app.module.ts",
-      "app.module.ts",
+      'src/app.module.ts',
+      'src/app/app.module.ts',
+      'app.module.ts',
     ];
 
     for (const path of commonPaths) {
@@ -89,6 +89,6 @@ export class ModuleFinder {
     }
 
     const content = tree.read(modulePath)?.toString();
-    return !!content && content.includes("@Module");
+    return !!content && content.includes('@Module');
   }
 }

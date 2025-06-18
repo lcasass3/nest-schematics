@@ -1,4 +1,4 @@
-import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import {
   apply,
   branchAndMerge,
@@ -7,23 +7,23 @@ import {
   move,
   template,
   url,
-} from "@angular-devkit/schematics";
-import { Path } from "@angular-devkit/core";
+} from '@angular-devkit/schematics';
+import { Path } from '@angular-devkit/core';
 
-import { CqrsModuleOptions } from "./schema";
+import { CqrsModuleOptions } from './schema';
 import {
   DependencyValidator,
   ModuleFinder,
   PathResolver,
   ModuleContentManipulator,
   OptionsTransformer,
-} from "./utils";
+} from './utils';
 
 export default function moduleSchematic(options: CqrsModuleOptions): Rule {
   return (tree: Tree, ctx: SchematicContext) => {
     const validation = OptionsTransformer.validate(options);
     if (!validation.valid) {
-      throw new Error(`Invalid options: ${validation.errors.join(", ")}`);
+      throw new Error(`Invalid options: ${validation.errors.join(', ')}`);
     }
 
     const transformedOptions = OptionsTransformer.transform(options);
@@ -44,7 +44,7 @@ export default function moduleSchematic(options: CqrsModuleOptions): Rule {
  * @returns Source for generating files
  */
 function generateFiles(options: CqrsModuleOptions) {
-  const sourceTemplates = url("./cqrs-module/files");
+  const sourceTemplates = url('./cqrs-module/files');
   const templateVariables = OptionsTransformer.createTemplateVariables(options);
 
   return apply(sourceTemplates, [
@@ -63,7 +63,7 @@ function addDeclarationToModule(options: CqrsModuleOptions): Rule {
     // Skip if no module option is provided and no path to search from
     if (!options.module && !options.path) {
       console.log(
-        "No module path specified and no search path available. Skipping module registration."
+        'No module path specified and no search path available. Skipping module registration.'
       );
       return tree;
     }

@@ -1,5 +1,5 @@
-import { strings } from "@angular-devkit/core";
-import pluralize from "pluralize";
+import { strings } from '@angular-devkit/core';
+import pluralize from 'pluralize';
 
 /**
  * Utility class for calculating relative paths between directories
@@ -17,7 +17,7 @@ export class PathResolver {
     targetPath: string,
     name: string
   ): string {
-    const moduleDir = modulePath.split("/").slice(0, -1).join("/");
+    const moduleDir = modulePath.split('/').slice(0, -1).join('/');
     const targetDir = targetPath;
 
     const moduleName = strings.dasherize(pluralize.plural(name));
@@ -33,8 +33,8 @@ export class PathResolver {
    * @returns Relative path
    */
   static getRelativePath(from: string, to: string): string {
-    const fromParts = from.split("/").filter(Boolean);
-    const toParts = to.split("/").filter(Boolean);
+    const fromParts = from.split('/').filter(Boolean);
+    const toParts = to.split('/').filter(Boolean);
 
     // Find common base
     let commonLength = 0;
@@ -49,10 +49,10 @@ export class PathResolver {
     const upLevels = fromParts.length - commonLength;
     const downPath = toParts.slice(commonLength);
 
-    const relativeParts = Array(upLevels).fill("..").concat(downPath);
-    const result = relativeParts.join("/");
+    const relativeParts = Array(upLevels).fill('..').concat(downPath);
+    const result = relativeParts.join('/');
 
-    return result.startsWith(".") ? result : `./${result}`;
+    return result.startsWith('.') ? result : `./${result}`;
   }
 
   /**
@@ -61,7 +61,7 @@ export class PathResolver {
    * @returns Normalized path
    */
   static normalizePath(path: string): string {
-    return path.split("/").filter(Boolean).join("/");
+    return path.split('/').filter(Boolean).join('/');
   }
 
   /**
@@ -70,6 +70,6 @@ export class PathResolver {
    * @returns Directory path
    */
   static getDirectoryPath(filePath: string): string {
-    return filePath.split("/").slice(0, -1).join("/");
+    return filePath.split('/').slice(0, -1).join('/');
   }
 }
