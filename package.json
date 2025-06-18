@@ -11,7 +11,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:full": "npm run build && npm run test",
-    "prepublishOnly": "npm run build"
+    "format": "prettier --write \"src/**/*.{ts,js,json,md}\" \"*.{json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,json,md}\" \"*.{json,md}\"",
+    "prepublishOnly": "npm run build",
+    "ci": "npm run build && npm run test"
   },
   "schematics": "./src/collection.json",
   "keywords": [
@@ -43,6 +46,7 @@
     "@types/node": "^24.0.3",
     "@types/pluralize": "^0.0.33",
     "jest": "^30.0.0",
+    "prettier": "^3.5.3",
     "ts-jest": "^29.4.0",
     "typescript": "^5.8.3"
   },
