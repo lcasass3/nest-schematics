@@ -1,6 +1,6 @@
 {
   "name": "@lcasass3/nest-schematics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular CLI schematic for generating CQRS modules with hexagonal architecture in NestJS applications",
   "main": "dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "ci": "npm run build && npm run test && npm run format:check",
     "prepublishOnly": "npm run ci"
   },
-  "schematics": "./src/collection.json",
+  "schematics": "./dist/collection.json",
   "keywords": [
     "nestjs",
     "cqrs",

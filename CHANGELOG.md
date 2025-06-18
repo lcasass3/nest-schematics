@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-06-18
+
+### Fixed
+
+- 🐛 Fixed schematic collection path to point to dist folder instead of src folder
+- 🔧 Resolved "Path does not exist" error when using the schematic after npm installation
+
 ## [1.0.0] - 2025-06-17
 
 ### Added
