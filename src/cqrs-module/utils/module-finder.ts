@@ -46,7 +46,15 @@ export class ModuleFinder {
         );
 
         if (moduleFile) {
-          return `${currentPath}/${moduleFile}`;
+          const modulePath = `${currentPath}/${moduleFile}`;
+
+          // Skip if this is the same path we're generating to avoid circular imports
+          if (currentPath === startPath) {
+            pathSegments.pop();
+            continue;
+          }
+
+          return modulePath;
         }
       }
 

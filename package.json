@@ -1,19 +1,20 @@
 {
   "name": "@lcasass3/nest-schematics",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular CLI schematic for generating CQRS modules with hexagonal architecture in NestJS applications",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc && npm run copy:files",
+    "build:clean": "rm -rf dist && npm run build",
     "copy:files": "mkdir -p dist/cqrs-module && cp -r src/cqrs-module/files dist/cqrs-module/ && cp src/collection.json dist/ && cp src/cqrs-module/schema.json dist/cqrs-module/",
     "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:full": "npm run build && npm run test",
+    "test:full": "npm run build:clean && npm run test",
     "format": "prettier --write \"src/**/*.{ts,js,json,md}\" \"*.{json,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,js,json,md}\" \"*.{json,md}\"",
-    "ci": "npm run build && npm run test && npm run format:check",
+    "ci": "npm run build:clean && npm run test && npm run format:check",
     "prepublishOnly": "npm run ci"
   },
   "schematics": "./dist/collection.json",

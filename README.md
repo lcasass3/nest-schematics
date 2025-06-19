@@ -17,10 +17,8 @@ modules following hexagonal architecture principles in NestJS applications.
 ## Installation
 
 ```bash
-npm install -g @lcasass3/nest-schematics
+npm install -D @lcasass3/nest-schematics
 ```
-
-Due to the implementation of the NestJS CLI, the package must be global.
 
 ## Usage
 

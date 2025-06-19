@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-06-19
+
+### Fixed
+
+- 🐛 Fixed template processing to generate proper `.ts` files instead of `.ts.template` files
+- 🔧 Resolved circular import issue in module registration by improving module finder logic
+- 🧪 Updated test expectations to match correct file extensions after switching from `template()` to
+  `applyTemplates()`
+- 🎯 Enhanced `ModuleFinder.findNearestModule` to skip self-referencing modules and properly locate
+  parent modules
+
+### Technical Improvements
+
+- **Module Registration**: Fixed logic that was incorrectly trying to register modules with
+  themselves
+- **Template Processing**: Switched to `applyTemplates()` for proper file generation without
+  `.template` extensions
+- **Test Coverage**: All tests now pass with correct file path expectations
+- **Code Quality**: Removed debug logging and cleaned up implementation
+
 ## [1.0.1] - 2025-06-18
 
 ### Fixed

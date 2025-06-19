@@ -1,11 +1,15 @@
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import {
+  applyTemplates,
+  Rule,
+  SchematicContext,
+  Tree,
+} from '@angular-devkit/schematics';
 import {
   apply,
   branchAndMerge,
   chain,
   mergeWith,
   move,
-  template,
   url,
 } from '@angular-devkit/schematics';
 import { Path } from '@angular-devkit/core';
@@ -48,7 +52,7 @@ function generateFiles(options: CqrsModuleOptions) {
   const templateVariables = OptionsTransformer.createTemplateVariables(options);
 
   return apply(sourceTemplates, [
-    template(templateVariables),
+    applyTemplates(templateVariables),
     move(options.path as Path),
   ]);
 }
